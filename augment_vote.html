@@ -111,16 +111,17 @@
 
   // Connect using StreamerbotClient
   const client = new StreamerbotClient({
-    host: '127.0.0.1',
-    port: 8080
-  });
+  host: '127.0.0.1',
+  port: 8080
+});
 
-  client.on('Event.Custom', ({data}) => {
-    console.log('Received event:', data);
-    if(data.directive === 'StartVote') startVote();
-    else if(data.directive === 'EndVote'){ clearInterval(timerInterval); endVote(); }
-    else if(data.directive === 'CastVote' && data.user && data.choice) castVote(data.user, data.choice);
-  });
+client.on('*', (data) => {
+  console.log('ANY EVENT:', JSON.stringify(data));
+});
+
+window.testStart=()=>startVote();
+window.testVote=(user,choice)=>castVote(user,choice);
+window.testEnd=()=>{clearInterval(timerInterval);endVote();};
 
   window.testStart=()=>startVote();
   window.testVote=(user,choice)=>castVote(user,choice);
