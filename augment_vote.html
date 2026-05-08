@@ -115,7 +115,7 @@
     port: 8080
   });
 
-  client.on('General.Custom', ({data}) => {
+  client.on('Event.Custom', ({data}) => {
     console.log('Received event:', data);
     if(data.directive === 'StartVote') startVote();
     else if(data.directive === 'EndVote'){ clearInterval(timerInterval); endVote(); }
