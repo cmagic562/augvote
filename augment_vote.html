@@ -97,7 +97,7 @@
       setTimeout(()=>{
         const card=document.getElementById(`card-${cardNum}`),wrap=document.getElementById(`wrap-${cardNum}`);
         card.classList.remove('spinning');
-        if(cardNum===winner){setTimeout(()=>{card.classList.add('winner');wrap.classList.add('winner-wrap');resultText.textContent=`⚔️ AUGMENT ${winner} CHOSEN BY CHAT ⚔️`;client.doAction("db338b0c-2f29-4ed9-91e7-46c934e53bb7", { winner: winner }); setTimeout(()=>{container.classList.remove('visible');},8000);},300);}
+        if(cardNum===winner){setTimeout(()=>{card.classList.add('winner');wrap.classList.add('winner-wrap');resultText.textContent=`⚔️ AUGMENT ${winner} CHOSEN BY CHAT ⚔️`;client.doAction({ id: "db338b0c-2f29-4ed9-91e7-46c934e53bb7" }, { winner: winner }); setTimeout(()=>{container.classList.remove('visible');},8000);},300);}
         else{card.classList.add('loser');}
       },index*700);
     });
